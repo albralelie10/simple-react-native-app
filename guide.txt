@@ -1,0 +1,109 @@
+
+npm install -g expo-cli
+Crea un nuevo proyecto de React Native usando Expo con el siguiente comando:
+
+expo init myapp
+Donde myapp es el nombre que le das a tu aplicación. Expo te pedirá que elijas un tipo de plantilla para tu proyecto. Puedes elegir cualquiera de las plantillas predefinidas o crear una aplicación en blanco.
+src 
+    components
+        RowText.js 
+        ListItem.js
+        IconText.js
+    screen
+        CurrentWeather.js
+        UpcomingWeather.js
+        City.js
+
+
+asseths 
+    weather-background
+    city-background.js
+
+
+///Navegacion
+
+npm i @react-navigation/native
+
+componentes react-navigation
+
+npx expo install react-native-screens react-native-safe-area-context
+
+npm i @react-navigation/bottom-tabs
+
+//USO API 
+import NavigationContainer
+import createBottomTabNavigator
+
+const Tab= createBottomNavigator()
+<Tab.Navigator>
+    <Tab.Screen name="Current" component={CurrentWeather}/>
+    ...
+<Tab.Navigator>
+
+//Geolocalizacion
+
+Primero intenta con esta instalacion :
+expo install expo-location
+Si no funciona intenta con esta:
+npx expo install expo-location
+
+
+Configuracion : https://docs.expo.dev/versions/latest/sdk/location/#installation
+
+//variables de entorno local 
+
+npm install -D react-native-dotenv
+
+babel configuration file :
+    plugins: ['module:react-native-dotenv']
+DETEN LA App
+IMPORT {VAR_ENV} FROM "@env"
+
+INICIA LA APP CON :
+npx expo start -c
+lee la var de entorno 
+
+cree archivo .env  y teste la lectura de la variable con console.log
+si todo funcion bien remplaze su key de prueba por el valor de su key en weatherApp 
+
+//FETCHING DATA
+
+estado weather = array empty []
+
+const fetchWeatherData=async()=>{
+  try{
+    ...
+    setWeather(data)
+  }catch(){
+    setError("could fetch data")
+  }finally{
+    setIsLoading(false)
+  }
+  
+}
+
+useEffect(()=>{
+
+  ....
+
+  await fetchgWeatherData()
+})
+
+//pasar datos a componentes
+
+  Cree un hook epersonalizado y mueva la logica 
+  despues llame al hook y recuepre los datos 
+  pase los datos a los compomentes en el componente tabNavigation y refactorize para pasarlos como children en lugar de usar compoenntes en Tab.Screen
+  haga dinamico los datos (opcional)
+  npm install moment --save
+  import moment from "moment"
+  moment(data).format("h:mm:ss a")
+
+///error Screen
+
+name="frown"
+name="druplet"
+
+
+//loaing screen 
+import activityindicator
